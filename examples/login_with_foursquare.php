@@ -1,16 +1,8 @@
 <?php
-/*
- * login_with_foursquare.php
- *
- * @(#) $Id: login_with_foursquare.php,v 1.1 2013/10/13 09:41:36 mlemos Exp $
- *
- */
+	require('../.dev/config.php');
 
-	/*
-	 *  Get the http.php file from http://www.phpclasses.org/httpclient
-	 */
-	require('http.php');
-	require('oauth_client.php');
+	require('../http/http.php');
+	require('../oauth/oauth_client.php');
 
 	$client = new oauth_client_class;
 	$client->server = 'Foursquare';
@@ -20,8 +12,8 @@
 	$client->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].
 		dirname(strtok($_SERVER['REQUEST_URI'],'?')).'/login_with_foursquare.php';
 
-	$client->client_id = ''; $application_line = __LINE__;
-	$client->client_secret = '';
+	$client->client_id = $config['foursquare']['client_id'] ?: ''; $application_line = __LINE__;
+	$client->client_secret = $config['foursquare']['client_secret'] ?: '';
 
 	if(strlen($client->client_id) == 0
 	|| strlen($client->client_secret) == 0)

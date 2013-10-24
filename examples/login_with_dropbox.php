@@ -1,14 +1,4 @@
 <?php
-/*
- * login_with_dropbox.php
- *
- * @(#) $Id: login_with_dropbox.php,v 1.2 2013/07/31 11:48:04 mlemos Exp $
- *
- */
-
-	/*
-	 *  Get the http.php file from http://www.phpclasses.org/httpclient
-	 */
 	require('../.dev/config.php');
 
 	require('../http/http.php');

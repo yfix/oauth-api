@@ -1,16 +1,8 @@
 <?php
-/*
- * login_with_box.php
- *
- * @(#) $Id: login_with_box.php,v 1.2 2013/07/31 11:48:04 mlemos Exp $
- *
- */
+	require('../.dev/config.php');
 
-	/*
-	 *  Get the http.php file from http://www.phpclasses.org/httpclient
-	 */
-	require('http.php');
-	require('oauth_client.php');
+	require('../http/http.php');
+	require('../oauth/oauth_client.php');
 
 	$client = new oauth_client_class;
 	$client->server = 'Box';
@@ -24,8 +16,8 @@
 	$client->redirect_uri = 'https://'.$_SERVER['HTTP_HOST'].
 		dirname(strtok($_SERVER['REQUEST_URI'],'?')).'/login_with_box.php';
 
-	$client->client_id = ''; $application_line = __LINE__;
-	$client->client_secret = '';
+	$client->client_id = $config['box']['client_id'] ?: ''; $application_line = __LINE__;
+	$client->client_secret = $config['box']['client_secret'] ?: '';
 
 	if(strlen($client->client_id) == 0
 	|| strlen($client->client_secret) == 0)
