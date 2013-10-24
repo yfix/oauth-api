@@ -863,6 +863,38 @@ class oauth_client_class
 				$this->authorization_header = false;
 				break;
 
+			case 'Yandex':
+				$this->oauth_version = '2.0';
+				$this->request_token_url = 'https://oauth.yandex.com/authorize';
+				$this->dialog_url = 'https://oauth.yandex.com/authorize';
+				$this->access_token_url = 'https://oauth.yandex.com/verification_code';
+				$this->authorization_header = false;
+				break;
+
+			case 'vk':
+				$this->oauth_version = '2.0';
+#	$this->baseApiUri = new Uri('https://api.vk.com/method/');
+#	return new Uri('https://oauth.vk.com/authorize');
+#	return new Uri('https://oauth.vk.com/access_token');
+
+#				$this->request_token_url = 'https://oauth.yandex.com/authorize';
+#				$this->dialog_url = 'https://oauth.yandex.com/authorize';
+#				$this->access_token_url = 'https://oauth.yandex.com/verification_code';
+				$this->authorization_header = false;
+				break;
+
+			case 'amazon':
+				$this->oauth_version = '2.0';
+#	$this->baseApiUri = new Uri('https://api.amazon.com/');
+#	return new Uri('https://www.amazon.com/ap/oa');
+#	return new Uri('https://www.amazon.com/ap/oatoken');
+
+#				$this->request_token_url = 'https://oauth.yandex.com/authorize';
+#				$this->dialog_url = 'https://oauth.yandex.com/authorize';
+#				$this->access_token_url = 'https://oauth.yandex.com/verification_code';
+				$this->authorization_header = false;
+				break;
+
 			default:
 				return($this->SetError($this->server.' is not yet a supported type of OAuth server. Please contact the author Manuel Lemos <mlemos@acm.org> to request adding built-in support to this type of OAuth server.'));
 		}
