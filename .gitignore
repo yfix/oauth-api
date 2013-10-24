@@ -1,0 +1,11 @@
+# git ignore
+
+# Ignore files,
+*~
+*.log
+*.swp
+# ignore folders
+logs/
+artifacts/
+.dev/override.php
+.dev/config.php

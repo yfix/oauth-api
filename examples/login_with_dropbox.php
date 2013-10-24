@@ -9,8 +9,10 @@
 	/*
 	 *  Get the http.php file from http://www.phpclasses.org/httpclient
 	 */
-	require('http.php');
-	require('oauth_client.php');
+	require('../.dev/config.php');
+
+	require('../http/http.php');
+	require('../oauth/oauth_client.php');
 
 	$client = new oauth_client_class;
 	$client->debug = 1;
@@ -19,8 +21,8 @@
 	$client->redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].
 		dirname(strtok($_SERVER['REQUEST_URI'],'?')).'/login_with_dropbox.php';
 
-	$client->client_id = ''; $application_line = __LINE__;
-	$client->client_secret = '';
+	$client->client_id = $config['dropbox']['client_id'] ?: ''; $application_line = __LINE__;
+	$client->client_secret = $config['dropbox']['client_secret'] ?: '';
 
 	if(strlen($client->client_id) == 0
 	|| strlen($client->client_secret) == 0)
